@@ -51,7 +51,7 @@ public class User {
    
     public String getEmail() {
         return email;
-    }
+    
     
     // standard constructors / setters / getters / toString
     
