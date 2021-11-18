@@ -6,16 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import scala.collection.StringOps;
-import scala.collection.StringParsers;
-
 import javax.persistence.Column;
 
 @Entity
 
 @Table(name="User_tbl")
 public class User {
-      
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
@@ -55,4 +51,5 @@ public class User {
     
     // standard constructors / setters / getters / toString
     
+}
 }
