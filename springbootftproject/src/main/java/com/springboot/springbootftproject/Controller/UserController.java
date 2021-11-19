@@ -22,16 +22,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
 @RestController
-@RequestMapping("\api,v1")
+@RequestMapping("/api,v1")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository ;   
-    
+    /**
     //get all user list
     @GetMapping("/User")
-    public List<User>getAllUsers(){
-        return userRepository.findAll();
+    public List<User>listAll(){
+    //public List<User>getAllUsers(){
+      //  return userRepository.findAll();
     }
     //Create user
     @PostMapping
@@ -66,5 +65,5 @@ public class UserController {
        .orElseThrow(() -> new ResourceNotFoundException("User not found for this ID ::"+UserId));
     userRepository.deleteById(UserId);
     return ResponseEntity.ok().body(); 
-       }
+       } */
 }

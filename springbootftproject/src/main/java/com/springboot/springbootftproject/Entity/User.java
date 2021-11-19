@@ -15,14 +15,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(name="id")
     private int id;
-    
-    @Column(name="name")
     private  String name;
-
-    @Column(name="email")
     private  String email;
+    
     //Constructor
     public User() {
         super();
@@ -52,4 +48,4 @@ public class User {
     // standard constructors / setters / getters / toString
     
 }
-}
+}   
