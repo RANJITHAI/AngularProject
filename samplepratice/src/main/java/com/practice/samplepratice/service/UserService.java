@@ -15,6 +15,7 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
 	private UserAddressRepository userAddressRepository;
 	
 	public User changeEmail(String mail, Integer id) {
@@ -54,5 +55,11 @@ public class UserService {
 	public List<User> findSimilarRecords(String name, String email) {
 		System.out.println("name: "+name+" - email: "+email);
 		return userRepository.findByNameAndEmail(name, email);
+	}
+
+	public List<UserAddress> insertaddr(List<UserAddress> userAddress, Integer id) {
+		userAddressRepository.saveAll(userAddress);
+	     return userAddressRepository.findAll();
+	     
 	}
 }

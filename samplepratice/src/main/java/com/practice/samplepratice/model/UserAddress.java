@@ -1,13 +1,9 @@
 package com.practice.samplepratice.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +12,7 @@ import javax.persistence.Table;
 public class UserAddress {
 
 	@Id
-	@GeneratedValue
-
+	
 	@Column(name = "add_id")
 	private Integer add_id;
 
@@ -28,22 +23,20 @@ public class UserAddress {
 	private String city;
 
 	@Column(name = "state")
+
 	private String state;
 
 	@Column(name = "country")
 	private String country;
-	
+
 	@Column(name = "user_id")
 	private Integer user_id;
-
-	
-	   
 
 	public UserAddress() {
 		super();
 	}
-	
-	public UserAddress(Integer add_id, String street, String city, String state, String country,Integer user_id) {
+
+	public UserAddress(Integer add_id, String street, String city, String state, String country, Integer user_id) {
 		super();
 		this.add_id = add_id;
 		this.street = street;
@@ -52,7 +45,7 @@ public class UserAddress {
 		this.country = country;
 		this.user_id = user_id;
 	}
-	
+
 	public Integer getAdd_id() {
 		return add_id;
 	}
@@ -100,10 +93,10 @@ public class UserAddress {
 	public void setId(Integer user_id) {
 		this.user_id = user_id;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "UserAddress [add_id=" + add_id + ", id=" + user_id + ", street=" + street + ", city=" + city + ", state="
-				+ state + ", country=" + country + "]";
+		return "UserAddress [add_id=" + add_id + ", id=" + user_id + ", street=" + street + ", city=" + city
+				+ ", state=" + state + ", country=" + country + "]";
 	}
 }
