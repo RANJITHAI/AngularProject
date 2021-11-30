@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,10 +24,10 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany
-	@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
+	//@OneToMany
+	//@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
 
-	private List<UserAddress> userAddress;
+//	private List<UserAddress> userAddress;
 
 	public User() {
 		super();
@@ -40,7 +38,7 @@ public class User {
 		this.id = id;
 		this.email = email;
 		this.name = name;
-		this.userAddress = userAddress;
+	//	this.userAddress = userAddress;
 	}
 
 	public Integer getId() {
@@ -67,17 +65,17 @@ public class User {
 		this.email = email;
 	}
 
-	public List<UserAddress> getUserAddress() {
-		return userAddress;
-	}
+//	public List<UserAddress> getUserAddress() {
+	//	return userAddress;
+//	}
 
-	public void setUserAddress(List<UserAddress> userAddress) {
-		this.userAddress = userAddress;
-	}
+//	public void setUserAddress(List<UserAddress> userAddress) {
+	//	this.userAddress = userAddress;
+	//}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userAddress=" + userAddress + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userAddress=" +/* userAddress +*/ "]";
 	}
 
 }

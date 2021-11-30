@@ -2,8 +2,9 @@ package com.practice.samplepratice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +13,11 @@ import javax.persistence.Table;
 public class UserAddress {
 
 	@Id
-	
+
+	@ManyToOne
+	@JoinColumn(name = "id", nullable = false, updatable = false, insertable = false)
+	private User user;
+
 	@Column(name = "add_id")
 	private Integer add_id;
 
@@ -23,7 +28,6 @@ public class UserAddress {
 	private String city;
 
 	@Column(name = "state")
-
 	private String state;
 
 	@Column(name = "country")
@@ -36,8 +40,10 @@ public class UserAddress {
 		super();
 	}
 
-	public UserAddress(Integer add_id, String street, String city, String state, String country, Integer user_id) {
+	public UserAddress(User user, Integer add_id, String street, String city, String state, String country,
+			Integer user_id) {
 		super();
+		this.user = user;
 		this.add_id = add_id;
 		this.street = street;
 		this.city = city;
@@ -94,9 +100,17 @@ public class UserAddress {
 		this.user_id = user_id;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "UserAddress [add_id=" + add_id + ", id=" + user_id + ", street=" + street + ", city=" + city
-				+ ", state=" + state + ", country=" + country + "]";
+				+ ", state=" + state + ", country=" + country + ",user=" + user + "]";
 	}
 }

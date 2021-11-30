@@ -62,4 +62,8 @@ public class UserService {
 	     return userAddressRepository.findAll();
 	     
 	}
+
+	public Iterable<User> manyToOneEx() {
+		return userRepository.findAll();
+	}
 }

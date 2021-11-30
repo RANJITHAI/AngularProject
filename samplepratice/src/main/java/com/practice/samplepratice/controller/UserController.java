@@ -70,4 +70,10 @@ public class UserController {
 	public List<User> fetchSimlarRecordsByName(@PathVariable String name,@RequestBody String email){
     return userService.findSimilarRecords(name,email);
     }
+	
+	//Display Manytoone table values
+	@GetMapping("/base1")
+	public Iterable<User> many(){
+		return userService.manyToOneEx();
+	}
 }
