@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
@@ -24,11 +24,10 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	//@OneToMany
-	//@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
-
-//	private List<UserAddress> userAddress;
-
+	/* @OneToMany
+	 * @JoinColumn(name = "user_id", nullable = false, updatable = false, insertable
+	 * = false) private List<UserAddress> userAddress;
+	 */
 	public User() {
 		super();
 	}
@@ -38,7 +37,7 @@ public class User {
 		this.id = id;
 		this.email = email;
 		this.name = name;
-	//	this.userAddress = userAddress;
+		// this.userAddress = userAddress;
 	}
 
 	public Integer getId() {
@@ -65,17 +64,16 @@ public class User {
 		this.email = email;
 	}
 
-//	public List<UserAddress> getUserAddress() {
-	//	return userAddress;
-//	}
-
-//	public void setUserAddress(List<UserAddress> userAddress) {
-	//	this.userAddress = userAddress;
-	//}
+	/*
+	 * public List<UserAddress> getUserAddress() { return userAddress; }
+	 * 
+	 * public void setUserAddress(List<UserAddress> userAddress) { this.userAddress
+	 * = userAddress; }
+	 */
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userAddress=" +/* userAddress +*/ "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userAddress=" + /* userAddress + */ "]";
 	}
 
 }

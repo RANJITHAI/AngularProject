@@ -2,6 +2,8 @@ package com.practice.samplepratice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,12 +14,11 @@ import javax.persistence.Table;
 
 public class UserAddress {
 
-	@Id
-
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ManyToOne
-	@JoinColumn(name = "id", nullable = false, updatable = false, insertable = false)
+	@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
 	private User user;
-
+	@Id
 	@Column(name = "add_id")
 	private Integer add_id;
 
@@ -26,7 +27,7 @@ public class UserAddress {
 
 	@Column(name = "city")
 	private String city;
-
+	
 	@Column(name = "state")
 	private String state;
 
@@ -38,6 +39,7 @@ public class UserAddress {
 
 	public UserAddress() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public UserAddress(User user, Integer add_id, String street, String city, String state, String country,
@@ -50,6 +52,24 @@ public class UserAddress {
 		this.state = state;
 		this.country = country;
 		this.user_id = user_id;
+	}
+
+	@Override
+	public String toString() {
+		return "UserAddress [user=" + user + ", add_id=" + add_id + ", street=" + street + ", city=" + city + ", state="
+				+ state + ", country=" + country + ", user_id=" + user_id + ", getUser()=" + getUser()
+				+ ", getAdd_id()=" + getAdd_id() + ", getStreet()=" + getStreet() + ", getCity()=" + getCity()
+				+ ", getState()=" + getState() + ", getCountry()=" + getCountry() + ", getUser_id()=" + getUser_id()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Integer getAdd_id() {
@@ -92,25 +112,12 @@ public class UserAddress {
 		this.country = country;
 	}
 
-	public Integer getId() {
+	public Integer getUser_id() {
 		return user_id;
 	}
 
-	public void setId(Integer user_id) {
+	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	@Override
-	public String toString() {
-		return "UserAddress [add_id=" + add_id + ", id=" + user_id + ", street=" + street + ", city=" + city
-				+ ", state=" + state + ", country=" + country + ",user=" + user + "]";
-	}
 }
