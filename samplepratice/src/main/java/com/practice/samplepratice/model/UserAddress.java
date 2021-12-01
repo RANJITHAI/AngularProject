@@ -2,20 +2,26 @@ package com.practice.samplepratice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_address")
 
 public class UserAddress {
+	
 
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
-	private User user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	/*
+	 * @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 * 
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "user_id", nullable = false, updatable = false, insertable
+	 * = false) private User user;
+	 */
 	@Id
 	@Column(name = "add_id")
 	private Integer add_id;
@@ -25,7 +31,7 @@ public class UserAddress {
 
 	@Column(name = "city")
 	private String city;
-	
+
 	@Column(name = "state")
 	private String state;
 
@@ -43,7 +49,7 @@ public class UserAddress {
 	public UserAddress(User user, Integer add_id, String street, String city, String state, String country,
 			Integer user_id) {
 		super();
-		this.user = user;
+		// this.user = user;
 		this.add_id = add_id;
 		this.street = street;
 		this.city = city;
@@ -54,21 +60,20 @@ public class UserAddress {
 
 	@Override
 	public String toString() {
-		return "UserAddress [user=" + user + ", add_id=" + add_id + ", street=" + street + ", city=" + city + ", state="
-				+ state + ", country=" + country + ", user_id=" + user_id + ", getUser()=" + getUser()
+		return "UserAddress ["
+				/* user=" + user + */ + " add_id=" + add_id + ", street=" + street + ", city=" + city + ", state="
+				+ state + ", country=" + country + ", user_id=" + user_id /* + ", getUser()=" + getUser() */
 				+ ", getAdd_id()=" + getAdd_id() + ", getStreet()=" + getStreet() + ", getCity()=" + getCity()
 				+ ", getState()=" + getState() + ", getCountry()=" + getCountry() + ", getUser_id()=" + getUser_id()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	/*
+	 * public User getUser() { return user; }
+	 * 
+	 * public void setUser(User user) { this.user = user; }
+	 */
 
 	public Integer getAdd_id() {
 		return add_id;

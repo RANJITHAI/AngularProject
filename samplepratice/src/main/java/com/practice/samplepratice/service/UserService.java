@@ -76,4 +76,8 @@ public class UserService {
 		return userAddressRepository.findAll();
 
 	}
+
+	public List<User> getdetails() {
+		return userRepository.findAll();
+	}
 }

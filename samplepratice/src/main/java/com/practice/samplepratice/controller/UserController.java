@@ -82,5 +82,11 @@ public class UserController {
 	public List<User> fetchSimlarRecordsByName(@PathVariable String name, @RequestBody String email) {
 		return userService.findSimilarRecords(name, email);
 	}
+	
+	//Query 
+	@GetMapping("/query")
+	public List<User> getAllRecords(){
+		return userService.getdetails();
+	}
 
 }

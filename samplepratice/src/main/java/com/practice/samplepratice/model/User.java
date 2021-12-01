@@ -1,12 +1,13 @@
 package com.practice.samplepratice.model;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +15,8 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "id")
 	private Integer id;
 
@@ -24,20 +26,30 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	/* @OneToMany
+	/*
+	 * @OneToMany
+	 * 
 	 * @JoinColumn(name = "user_id", nullable = false, updatable = false, insertable
 	 * = false) private List<UserAddress> userAddress;
 	 */
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
+	// @OneToOne(cascade = CascadeType.ALL)
+	// @JoinColumn(name = "user_id")
+
+	private UserAddress userAddress;
+
 	public User() {
 		super();
 	}
 
-	public User(Integer id, String email, String name, List<UserAddress> userAddress) {
+	public User(Integer id, String name, String email, UserAddress userAddress) {
 		super();
 		this.id = id;
-		this.email = email;
 		this.name = name;
-		// this.userAddress = userAddress;
+		this.email = email;
+		this.userAddress = userAddress;
 	}
 
 	public Integer getId() {
@@ -64,16 +76,20 @@ public class User {
 		this.email = email;
 	}
 
-	/*
-	 * public List<UserAddress> getUserAddress() { return userAddress; }
-	 * 
-	 * public void setUserAddress(List<UserAddress> userAddress) { this.userAddress
-	 * = userAddress; }
-	 */
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userAddress=" + /* userAddress + */ "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", userAddress=" + userAddress + ", getId()="
+				+ getId() + ", getName()=" + getName() + ", getEmail()=" + getEmail() + ", getUserAddress()="
+				+ getUserAddress() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 
 }
