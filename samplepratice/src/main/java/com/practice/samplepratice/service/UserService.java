@@ -32,11 +32,19 @@ public class UserService {
 
 	public Iterable<User> fetchAllRecords() {
 		return userRepository.findAll();
-
 	}
 
 	public Iterable<UserAddress> manyToOneEx() {
 		return userAddressRepository.findAll();
+	}
+
+	public Optional<UserAddress> findbyid(Integer id) {
+		return userAddressRepository.findById(id);
+
+	}
+
+	public UserAddress createUseraddress(UserAddress userAddress) {
+		return userAddressRepository.save(userAddress);
 	}
 
 	public Iterable<UserAddress> fetchAllRecords1() {
@@ -68,5 +76,4 @@ public class UserService {
 		return userAddressRepository.findAll();
 
 	}
-
 }

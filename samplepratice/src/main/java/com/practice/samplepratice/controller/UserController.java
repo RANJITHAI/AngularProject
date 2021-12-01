@@ -2,6 +2,7 @@ package com.practice.samplepratice.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,24 +35,31 @@ public class UserController {
 		return userService.changeEmail(mail, id);
 	}
 
-	// Fetch all datas from database
+	// Fetch all data from database
 	@GetMapping("/base")
 	public Iterable<User> fecthAll() {
 		return userService.fetchAllRecords();
 	}
 
-	// Display Manytoone table values
+	// Display Many to one table values
 	@GetMapping("/base1")
 	public Iterable<UserAddress> fetchAll() {
 		return userService.manyToOneEx();
 	}
 
-	// Insert Parent table
+	// Fetch particular Data from UserAddress table
+	@GetMapping("/base1-displayid/{id}")
+	public Optional<UserAddress> displayALl(@PathVariable Integer id) {
+		return userService.findbyid(id);
+	}
+
+	// Insert User table
 	@PostMapping("/create-user")
 	public User createuser(@RequestBody User user) {
 		return userService.createUser(user);
 	}
 
+	// insert UserAddress table
 	@PostMapping("/address/{id}")
 	public List<UserAddress> inserts(@RequestBody List<UserAddress> userAddress, @PathVariable Integer id) {
 		return userService.insertaddr(userAddress, id);
