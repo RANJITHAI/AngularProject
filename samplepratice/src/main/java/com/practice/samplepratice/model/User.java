@@ -3,6 +3,7 @@ package com.practice.samplepratice.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,11 +34,9 @@ public class User {
 	 * = false) private List<UserAddress> userAddress;
 	 */
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", nullable = false, updatable = false, insertable = false)
-	// @OneToOne(cascade = CascadeType.ALL)
-	// @JoinColumn(name = "user_id")
-
+	//@OneToOne(fetch= FetchType.LAZY ,cascade = CascadeType.ALL)
+	//@JoinColumn(name = "user_id")
+	
 	private UserAddress userAddress;
 
 	public User() {
