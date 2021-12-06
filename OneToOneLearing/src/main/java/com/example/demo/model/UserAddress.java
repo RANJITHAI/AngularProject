@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "studentuseraddress")
