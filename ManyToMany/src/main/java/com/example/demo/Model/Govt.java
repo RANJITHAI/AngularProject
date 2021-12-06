@@ -81,13 +81,6 @@ public class Govt {
 		this.personal = personal;
 	}
 
-	@Override
-	public String toString() {
-		return "Govt [id=" + id + ", title=" + title + ", eligible=" + eligible + ", age_limit=" + age_limit
-				+ ", personal=" + personal + ", getId()=" + getId() + ", getTitle()=" + getTitle() + ", getEligible()="
-				+ getEligible() + ", getAge_limit()=" + getAge_limit() + ", getPersonal()=" + getPersonal()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
+	
 
 }

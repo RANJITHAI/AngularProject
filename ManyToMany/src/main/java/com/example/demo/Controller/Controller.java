@@ -15,13 +15,13 @@ public class Controller {
 	@Autowired
 	GvtService gvtService;
 	
-//	@GetMapping("/base")
-//	public Iterable<Govt> fetchAll() {
-//		return gvtService.fetchAllRecords();
-//	}
-	@GetMapping("/Query")
-	public Iterable<Govt> findAllActiveUsersNative() {
+	@GetMapping("/base")
+	public Iterable<Govt> fetchAll() {
 		return gvtService.fetchAllRecords();
 	}
+//	@GetMapping("/Query")
+//	public Iterable<Govt> findAllActiveUsersNative() {
+//		return gvtService.fetchAllRecords();
+//	}
 
 }

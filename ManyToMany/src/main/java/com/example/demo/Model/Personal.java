@@ -4,44 +4,46 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "applicant")
 public class Personal {
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	
-	@Column(name = "personal_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Column(name = "person_id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "contact")
 	private int contact;
-	
+
 	@Column(name = "citizen")
 	private String citizen;
-	
+
 	@Column(name = "education")
 	private String educ;
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "personal")
+
+	@ManyToMany(targetEntity = Govt.class, mappedBy = "personal", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private List<Govt> govt;
-	
-	
 
 	public Personal() {
 		super();
 	}
 
-	public Personal(String name, int contact, String citizen, String educ) {
+	public Personal(int id, String name, int contact, String citizen, String educ, List<Govt> govt) {
 		super();
-
+		this.id = id;
 		this.name = name;
 		this.contact = contact;
 		this.citizen = citizen;
 		this.educ = educ;
+		this.govt = govt;
 	}
 
 	public int getId() {
@@ -83,7 +85,6 @@ public class Personal {
 	public void setEduc(String educ) {
 		this.educ = educ;
 	}
-	
 
 	public List<Govt> getGovt() {
 		return govt;
