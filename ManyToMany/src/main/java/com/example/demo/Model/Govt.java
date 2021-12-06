@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "govt_job")
 public class Govt {
@@ -23,10 +25,16 @@ public class Govt {
 	@Column(name = "age_limit")
 	private int age_limit;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "govt_applicant", joinColumns = { @JoinColumn(name = "job_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "person_id") })
-
+	// @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	// @JoinTable(name = "govt_applicant", joinColumns = { @JoinColumn(name =
+	// "job_id") }, inverseJoinColumns = {
+	// @JoinColumn(name = "person_id") })
+		
+	@ManyToMany(targetEntity = Personal.class, cascade = CascadeType.ALL)
+	@JoinTable(name = "govt_applicant", joinColumns = { @JoinColumn(name =
+	 "job_id") }, inverseJoinColumns = {
+	 @JoinColumn(name = "person_id") })
+	@JsonManagedReference
 	private List<Personal> personal;
 
 	public Govt() {
@@ -80,7 +88,5 @@ public class Govt {
 	public void setPersonal(List<Personal> personal) {
 		this.personal = personal;
 	}
-
-	
 
 }
