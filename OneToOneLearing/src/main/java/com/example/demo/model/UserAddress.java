@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class UserAddress {
 
 	@Id
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "add_id")
 	private Integer add_id;
 
@@ -102,5 +102,16 @@ public class UserAddress {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	@Override
+	public String toString() {
+		return "UserAddress [add_id=" + add_id + ", street=" + street + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", user_id=" + user_id + ", user=" + user + ", getAdd_id()=" + getAdd_id()
+				+ ", getStreet()=" + getStreet() + ", getCity()=" + getCity() + ", getState()=" + getState()
+				+ ", getCountry()=" + getCountry() + ", getUser_id()=" + getUser_id() + ", getUser()=" + getUser()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+	
 
 }

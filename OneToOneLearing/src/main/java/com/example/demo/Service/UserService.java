@@ -33,7 +33,6 @@ public class UserService {
 	}
 
 	public Optional<UserAddress> findByID(Integer id) {
-		// TODO Auto-generated method stub
 		return userAddressRepository.findById(id);
 	}
 
@@ -57,5 +56,10 @@ public class UserService {
 
 		return userAddressRepository.findAll();
 
+	}
+
+	public List<UserAddress> createUser(UserAddress useraa) {
+
+		return userRepository.save(useraa);
 	}
 }

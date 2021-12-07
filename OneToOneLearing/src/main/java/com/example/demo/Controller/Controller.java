@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+
 import com.example.demo.Service.UserService;
 import com.example.demo.model.User;
 import com.example.demo.model.UserAddress;
@@ -50,6 +51,11 @@ public class Controller {
 	@PostMapping("/update")
 	public List<UserAddress> update() {
 		return userService.insertrecords();
+	}
+	
+	@PostMapping("/create-user")
+	public List<UserAddress> createuser(@RequestBody UserAddress useraa) {
+		return userService.createUser(useraa);
 	}
 
 }
