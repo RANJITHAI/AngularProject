@@ -19,16 +19,17 @@ public class Student {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "address")
-	private String address;
-
 	@Column(name = "travel_fees")
 	private int fees;
 
 	@Column(name = "emergency_contact")
 	private int emcContact;
 
+	@Column(name = "address")
+	private String address;
+
 	@ManyToMany(targetEntity = CollegeBus.class, mappedBy = "student", cascade = CascadeType.ALL)
+
 	@JsonBackReference
 	private List<CollegeBus> bus;
 
@@ -40,10 +41,10 @@ public class Student {
 		super();
 		this.id = id;
 		this.name = name;
-		this.address = address;
 		this.fees = fees;
 		this.emcContact = emcContact;
 		this.bus = bus;
+		this.address = address;
 	}
 
 	public int getId() {

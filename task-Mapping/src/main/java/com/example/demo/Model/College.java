@@ -20,9 +20,6 @@ public class College {
 	@Column(name = "blocks")
 	private String blocks;
 
-	@Column(name = "clg_bus_no")
-	private int busNo;
-
 	@Column(name = "fees")
 	private int fees;
 
@@ -30,14 +27,14 @@ public class College {
 		super();
 	}
 
-	public College(int id, String clgName, String department, String blocks, int busNo, int fees) {
+	public College(int id, String clgName, String department, String blocks, int fees) {
 		super();
 		this.id = id;
 		this.clgName = clgName;
 		this.department = department;
 		this.blocks = blocks;
-		this.busNo = busNo;
 		this.fees = fees;
+
 	}
 
 	public int getId() {
@@ -72,14 +69,6 @@ public class College {
 		this.blocks = blocks;
 	}
 
-	public int getBusNo() {
-		return busNo;
-	}
-
-	public void setBusNo(int busNo) {
-		this.busNo = busNo;
-	}
-
 	public int getFees() {
 		return fees;
 	}
@@ -91,12 +80,9 @@ public class College {
 	@Override
 	public String toString() {
 		return "College [id=" + id + ", clgName=" + clgName + ", department=" + department + ", blocks=" + blocks
-				+ ", busNo=" + busNo + ", fees=" + fees + ", getId()=" + getId() + ", getClgName()=" + getClgName()
-				+ ", getDepartment()=" + getDepartment() + ", getBlocks()=" + getBlocks() + ", getBusNo()=" + getBusNo()
-				+ ", getFees()=" + getFees() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+				+ ", fees=" + fees + ", getId()=" + getId() + ", getClgName()=" + getClgName() + ", getDepartment()="
+				+ getDepartment() + ", getBlocks()=" + getBlocks() + ", getFees()=" + getFees() + ", getClgBus()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-
-
 
 }

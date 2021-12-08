@@ -12,14 +12,12 @@ public class CollegeBus {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "bus_no")
-	private int id;
+	private String busNo;
 
 	@Column(name = "driver_name")
 	private String driverName;
-
-	@Column(name = "root")
-	private String root;
 
 	@Column(name = "trip")
 	private String trip;
@@ -28,7 +26,8 @@ public class CollegeBus {
 		super();
 	}
 
-	@OneToMany(mappedBy = "university_id", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = College.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "uni_id", nullable = false, updatable = false, insertable = false)
 	private List<College> college;
 
 	@ManyToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
@@ -37,23 +36,21 @@ public class CollegeBus {
 	@JsonManagedReference
 	private List<Student> student;
 
-	public CollegeBus(int id, String driverName, String root, String trip, List<College> college,
-			List<Student> student) {
+	public CollegeBus(String busNo, String driverName, String trip, List<College> college, List<Student> student) {
 		super();
-		this.id = id;
+		this.busNo = busNo;
 		this.driverName = driverName;
-		this.root = root;
 		this.trip = trip;
 		this.college = college;
 		this.student = student;
 	}
 
-	public int getId() {
-		return id;
+	public String getBusNo() {
+		return busNo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setBusNo(String busNo) {
+		this.busNo = busNo;
 	}
 
 	public String getDriverName() {
@@ -62,14 +59,6 @@ public class CollegeBus {
 
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
-	}
-
-	public String getRoot() {
-		return root;
-	}
-
-	public void setRoot(String root) {
-		this.root = root;
 	}
 
 	public String getTrip() {
@@ -98,7 +87,8 @@ public class CollegeBus {
 
 	@Override
 	public String toString() {
-		return "CollegeBus [id=" + id + ", driverName=" + driverName + ", root=" + root + ", trip=" + trip + "]";
+		return "CollegeBus [BusNo=" + busNo + ", driverName=" + driverName + ", trip=" + trip + ", college=" + college
+				+ ", student=" + student + "]";
 	}
 
 }
